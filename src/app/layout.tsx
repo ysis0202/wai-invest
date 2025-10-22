@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AdBanner from "@/components/AdBanner";
+import Header from "@/components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,7 +43,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex min-h-screen">
+        <Header />
+        <div className="flex min-h-screen pt-16">
           {/* 왼쪽 광고 영역 - 데스크톱에서만 표시 */}
           <aside className="hidden xl:block xl:w-40 2xl:w-48 flex-shrink-0 bg-slate-800/40">
             <div className="sticky top-4 p-4 flex items-center justify-center min-h-screen">
