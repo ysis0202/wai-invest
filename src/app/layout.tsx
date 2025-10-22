@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import AdBanner from "@/components/AdBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,10 +31,47 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="flex min-h-screen">
+          {/* 왼쪽 광고 영역 - 데스크톱에서만 표시 */}
+          <aside className="hidden xl:block xl:w-40 2xl:w-48 flex-shrink-0">
+            <div className="sticky top-4 p-4">
+              <AdBanner
+                adFormat="vertical"
+                showPlaceholder={true}
+                // adClient="ca-pub-XXXXXXXXXXXXXXXX" // 실제 AdSense ID로 교체
+                // adSlot="1234567890" // 실제 광고 슬롯 ID로 교체
+              />
+            </div>
+          </aside>
+
+          {/* 메인 콘텐츠 영역 - 항상 표시 */}
+          <main className="flex-1 min-w-0">
+            {children}
+          </main>
+
+          {/* 오른쪽 광고 영역 - 데스크톱에서만 표시 */}
+          <aside className="hidden xl:block xl:w-40 2xl:w-48 flex-shrink-0">
+            <div className="sticky top-4 p-4">
+              <AdBanner
+                adFormat="vertical"
+                showPlaceholder={true}
+                // adClient="ca-pub-XXXXXXXXXXXXXXXX" // 실제 AdSense ID로 교체
+                // adSlot="0987654321" // 실제 광고 슬롯 ID로 교체 (왼쪽과 다른 ID)
+              />
+            </div>
+          </aside>
+        </div>
       </body>
     </html>
   );
