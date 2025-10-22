@@ -1,8 +1,214 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WAI-Invest
 
-## Getting Started
+**"오늘 위험한가? 왜 위험한가? 나에겐 무엇을 의미하나?"**
 
-First, run the development server:
+투자자를 위한 스마트 리스크 관리 플랫폼
+
+---
+
+## 🎯 프로젝트 개요
+
+WAI-Invest는 투자자들이 매일 직면하는 시장 리스크를 명확하게 이해하고, 개인화된 투자 의사결정을 내릴 수 있도록 돕는 플랫폼입니다.
+
+**핵심 철학**: "핵심 정보는 무료, 해석·개인화·시간절약은 유료"
+
+---
+
+## 📋 초기 기획안
+
+### 1) 포지셔닝 한 줄
+
+**"오늘 위험한가? 왜 위험한가? 나에겐 무엇을 의미하나?"**
+→ **신호(무료)** · **이유(유료)** · **개인화 행동가이드(유료)**
+
+---
+
+### 2) IA(정보구조) & 메뉴
+
+* 대시보드(오늘의 콕핏)
+* 스마트 캘린더
+* 슈퍼 팔로우(고래 & 애널리스트)
+* 리서치 & 스크리너
+* 프리미엄 브리핑
+* 알림함 · 설정 · 가격/구독
+
+---
+
+### 3) 플랜 구성 (Freemium 강화)
+
+#### Free — "습관을 만드는 무료 코어"
+
+* **대시보드**
+  * 공포/탐욕 지수 (무료)
+  * **마켓 웨더 지수 ☀️/☁️/⛈️** (무료)
+  * **리스크 모드 스위치 🟢/🟡/🔴** (무료, 핵심)
+  * 오늘의 핵심 드라이버 3–5줄 요약 (무료)
+  * **[Why?] 버튼은 잠금 (Pro 유도)**
+
+* **스마트 캘린더**
+  * 주요 경제지표 일정(예상/이전치) (무료)
+  * 관심종목 **3개**까지 실적/락업 일정 연동 (무료)
+  * **'So What?' 코멘트 / 시뮬레이터는 잠금(Pro)**
+
+* **슈퍼 팔로우(맛보기)**
+  * 대표 고래 3–5명 목록(보유 변동 리스트 요약) (무료)
+  * **추정 평단·괴리율·전체 고래 리스트는 잠금(Pro)**
+
+* **리서치 & 스크리너(맛보기)**
+  * 변동성 압축 Top **3** (무료)
+  * **전체 리스트/세부 필터 잠금(Pro)**
+
+* **알림**
+  * 이벤트 당일 기본 리마인드 1건(무료)
+
+* **전환 장치**
+  * [Why?], [So What?], 전체 보기 등 **호기심형 잠금**
+
+#### Pro — "맥락을 해석하고 시간을 아낀다" (월 9,900원 예시)
+
+* 대시보드의 **[Why?] 잠금 해제**(리스크 근거 3줄)
+* 스마트 캘린더 **'So What?' 코멘트 전체 열람**
+* 관심종목 **무제한**
+* 슈퍼 팔로우 **전체 기능**(모든 고래, **추정 평단/괴리율** 포함)
+* 리서치 & 스크리너 **전체 기능**(필터/정렬)
+* **개인화 아침 브리핑(요약판)**
+
+#### Alpha — "남보다 반 박자 빠른 신호" (월 19,900원 예시)
+
+* **교집합 시그널 실시간 알림**(고래 매수 + 상위 애널리스트 매수)
+* **컨센서스 균열 알림**(내부자 매도 + 고래 매수 등)
+* **내 포트폴리오 시뮬레이터**(이벤트 백테스트·민감도)
+* 고급 리서치(소셜 버즈 vs 기관 리포트, 매크로 민감도 스크리너)
+* **고급 알림**(내부자 거래/락업 임박/비정상 거래대금 스파이크)
+
+> 성장 장치: **친구 1명 초대 = Pro 1개월**, 3명 = Alpha 1개월 체험
+
+---
+
+### 4) 화면 구획 & 잠금 포인트(UX)
+
+#### A. 대시보드
+
+1. **오늘의 한 줄(히어로)**
+   * 예: "CPI D-day, 변동성↑ — **포지션 50%로 시작** 권장"
+
+2. **리스크 모드 스위치 🟢/🟡/🔴 (무료)**
+   * 하단에 작은 텍스트 버튼: **[Why?]** → 클릭 시 **Pro 업셀 모달**
+   * 업셀 카피 예:
+     * 제목: "왜 오늘 🔴인가요?"
+     * 본문(티저): "VIX +2.4, 선물 -0.8%, CPI D-day …" (뒤는 흐림 처리)
+     * CTA: "근거 전체 보기 (Pro로 열기)"
+
+3. **마켓 웨더 지수 (무료)** — ☀️/☁️/⛈️ + 한 줄 코멘트
+
+4. **공포/탐욕 지수 (무료)** — 수치·상태·전일 Δ
+
+5. **오늘의 핵심 드라이버 (무료)** — 3–5줄 요약
+
+6. **내 포트폴리오 영향도 (부분 무료)**
+   * 3종목까지 표시(무료) / **무제한은 Pro**
+
+7. **어제 대비 변화 Δ (무료 요약)**
+   * 상세는 Pro에서 "섹터별 상세"로 확장
+
+#### B. 스마트 캘린더
+
+* 리스트/월뷰(무료) + 이벤트 카드(이름, KST 시간, 예상/이전, 중요도)
+* 각 이벤트 옆 **[So What?] 잠금 아이콘(Pro)**
+  * 모달 예시: "예상 상회 시 → 기술주 단기 악재, 금융주 방어"
+  * 아래 CTA: "맥락 해석 보기 (Pro)"
+* **관심종목 3개 일정 연동(무료)**, **무제한(Pro)**
+* **충돌일 배지(무료)** — 실적+락업 겹침 등
+
+#### C. 슈퍼 팔로우
+
+* **대표 고래 3–5명 카드(무료)**: 최근 Top 변동 종목 미리보기
+* **'평단·괴리율·전체 고래 보기'는 Pro 잠금**
+* **교집합 시그널(Alpha)**: 리스트·알림 토글 잠금
+
+#### D. 리서치 & 스크리너
+
+* **변동성 압축 Top3(무료)** + "전체 27개 보기(Pro)"
+* 필터(기간/거래대금/섹터)는 **Pro**
+
+#### E. 프리미엄 브리핑
+
+* 08:00 요약 카드(무료 미리보기 1~2포인트)
+* **개인화 전체 요약/아이디어 트랙은 Pro/Alpha**
+
+---
+
+### 5) 대표 카피·문구(짧고 행동형)
+
+* **리스크 모드(무료)**
+  * "오늘은 **🔴 고위험** — 포지션 축소·발표 후 진입 권장"
+
+* **[Why?] 업셀(Pro)**
+  * "왜 오늘 위험한지 3줄로 정확히 알려드릴게요."
+
+* **[So What?] 업셀(Pro)**
+  * "이 지표가 **당신의 포지션**에 어떤 의미인지"
+
+* **교집합 시그널(Alpha)**
+  * "고래·상위 애널리스트 **동시 매수** — 실시간으로 먼저 받으세요"
+
+---
+
+### 6) 온보딩 & 리텐션 루프
+
+#### 초기 온보딩(1분)
+
+1. 관심 섹터/종목 최대 3개 선택(무료 범위 내)
+2. 알림 시간 설정(예: 평일 08:00)
+3. "리스크 모드 설명" 1장 → 신뢰 확보
+
+#### 리텐션 리추얼
+
+* 평일 08:00 **대시보드 방문 유도 알림**
+* 이벤트 전날 **T-24h 리마인드**(무료 1건)
+* "어제 대비 변화 Δ"로 매일 **차이만** 보여주기
+
+#### 성장형 유료화
+
+* 일정/고래/스캔 결과에서 **'3개까지만'** 보여주고, 4번째 클릭 시 업셀
+* **친구 초대 리워드**로 Pro/Alpha 체험 제공
+
+---
+
+### 7) 신호 모델(개념만)
+
+* **리스크 모드**: VIX·이벤트 D-day·선물 변동 조합 → 🟢/🟡/🔴
+* **마켓 웨더(0–100)**: 심리·변동성·이벤트·선물 가중 요약 → ☀️/☁️/⛈️
+* **So What?**: 이벤트 상·하회/컨센서스 변화에 대한 **섹터·스타일 영향 코멘트**
+* **교집합 시그널**: (고래 순매수) ∩ (상위 애널리스트 매수) ∩ (유동성 기준 통과)
+
+---
+
+### 8) 출시 체크리스트(기획 관점)
+
+- [ ] 대시보드 4대 무료 코어: 리스크 모드 / 마켓 웨더 / 공포탐욕 / 핵심 드라이버
+- [ ] [Why?] 모달 → Pro 업셀
+- [ ] 캘린더 기본 + 관심종목 3개 연동 + [So What?] 업셀
+- [ ] 슈퍼 팔로우 맛보기 + 평단/괴리율 잠금
+- [ ] 스크리너 Top3 무료 + 전체/필터 잠금
+- [ ] 알림: 08:00 요약, T-24h 리마인드(무료 1건)
+- [ ] 가격/구독 페이지(Free/Pro/Alpha 비교표 + 초대 리워드)
+
+---
+
+### 9) 성공 지표(초기 4주)
+
+* **D1/D7 리텐션**: ≥ 35% / ≥ 15%
+* **Free→Pro 전환율**: 3–5%
+* **Pro 유지율(월)**: ≥ 80%
+* **[Why?] 클릭당 업셀 페이지 도달율**: ≥ 25%
+* **일 평균 대시보드 체류시간**: 1.5–3분
+
+---
+
+## 🚀 시작하기
+
+### 개발 서버 실행
 
 ```bash
 npm run dev
@@ -10,27 +216,59 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 결과를 확인하세요.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`app/page.tsx` 파일을 수정하여 페이지를 편집할 수 있습니다. 파일을 수정하면 페이지가 자동으로 업데이트됩니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 빌드
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 프로덕션 실행
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔧 기술 스택
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **프레임워크**: Next.js 16 (App Router)
+- **언어**: TypeScript
+- **스타일링**: Tailwind CSS
+- **배포**: Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📦 배포
+
+### Vercel 배포
+
+1. [Vercel](https://vercel.com)에 로그인
+2. 새 프로젝트 생성
+3. GitHub 저장소 연결
+4. 자동 배포 완료
+
+또는 Vercel CLI 사용:
+
+```bash
+npm i -g vercel
+vercel
+```
+
+---
+
+## 📝 라이선스
+
+MIT
+
+---
+
+## 🤝 기여
+
+기여는 언제나 환영합니다! Issue 또는 Pull Request를 통해 참여해주세요.
