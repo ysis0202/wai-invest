@@ -48,8 +48,8 @@ export default function AdBanner({
     return (
       <div
         className={`
-          border-2 border-dashed border-slate-700 rounded-lg bg-slate-800/30 
-          flex items-center justify-center text-slate-500 text-xs text-center p-4
+          border-2 border-dashed border-slate-600 rounded-lg bg-slate-700/50 
+          flex items-center justify-center text-slate-400 text-xs text-center p-4
           ${adFormat === 'vertical' ? 'h-[600px] w-[160px]' : 'h-[90px] w-full'}
         `}
       >

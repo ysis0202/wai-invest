@@ -44,8 +44,8 @@ export default function RootLayout({
       >
         <div className="flex min-h-screen">
           {/* 왼쪽 광고 영역 - 데스크톱에서만 표시 */}
-          <aside className="hidden xl:block xl:w-40 2xl:w-48 flex-shrink-0">
-            <div className="sticky top-4 p-4">
+          <aside className="hidden xl:block xl:w-40 2xl:w-48 flex-shrink-0 bg-slate-800/40">
+            <div className="sticky top-4 p-4 flex items-center justify-center min-h-screen">
               <AdBanner
                 adFormat="vertical"
                 showPlaceholder={true}
@@ -61,8 +61,8 @@ export default function RootLayout({
           </main>
 
           {/* 오른쪽 광고 영역 - 데스크톱에서만 표시 */}
-          <aside className="hidden xl:block xl:w-40 2xl:w-48 flex-shrink-0">
-            <div className="sticky top-4 p-4">
+          <aside className="hidden xl:block xl:w-40 2xl:w-48 flex-shrink-0 bg-slate-800/40">
+            <div className="sticky top-4 p-4 flex items-center justify-center min-h-screen">
               <AdBanner
                 adFormat="vertical"
                 showPlaceholder={true}
